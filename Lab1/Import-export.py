@@ -30,54 +30,44 @@ pstdev=s.pstdev(saldo)
 print("pstdev",pstdev)
 
 #3
-gs = GridSpec(1, 3)
+gs = GridSpec(1, 5)
 fig = plt.figure(figsize=(10, 6))
 
 
 
-def hui(plot_column_num:int,column_dict_name:str,column_dict_num:int,x_label:str,label:str,multiplier=1.0):
-    ax=fig.add_subplot(gs[0,plot_column_num])
-    cities_data=df.iloc[:,[0,column_dict_num]]
-    cities_data_hist=cities_data.to_dict('list')
-    ys=cities_data_hist[column_dict_name]
-    if(multiplier!=1.0):
-        temp=[]
+def hui(plot_column_num:int, column_dict_name:str, column_dict_num:int, x_label:str, label:str, multiplier=1.0):
+    ax = fig.add_subplot(gs[0, plot_column_num])
+    cities_data = df.iloc[:, [0, column_dict_num]]
+    cities_data_hist = cities_data.to_dict('list')
+    ys = cities_data_hist[column_dict_name]
+    if multiplier != 1.0:
+        temp = []
         for i in cities_data_hist[column_dict_name]:
-            temp.append(i*multiplier)
-        ys=temp
-    ax.bar(cities_data_hist['у тому числі'],ys)
-    ax.set_xticklabels(cities_data_hist['у тому числі'], rotation=90)
-    yticks=np.linspace(round(min(ys),2),round(max(ys),3),num=5)
-    ax.set_yticks(yticks)
-    ax.set_yticklabels(yticks)
-    ax.set_xlabel(x_label)
+            temp.append(i * multiplier)
+        ys = temp
+    # Change to horizontal bar plot
+    ax.barh(cities_data_hist['у тому числі'], ys)
+    # Adjusting the x and y labels since we're flipping the orientation
+    ax.set_yticklabels(cities_data_hist['у тому числі'], rotation=0)  # Assuming you want the 'у тому числі' as y labels now
+    xticks = np.linspace(round(min(ys), 2), round(max(ys), 3), num=5)
+    ax.set_xticks(xticks)
+    ax.set_xticklabels(xticks,rotation=90)
+    ax.set_ylabel(x_label)  # Now it's the y label since we flipped the axes
     ax.set_title(label)
-    ax.grid(axis='y')
+    ax.grid(axis='x')  # Grid lines now should be along the x-axis
     return ax
+
 
 
 # Сальдо - гістрограма
 hui(0,'Unnamed: 7',7,'Міста','Сальдо, млрд. долл',10e-7)
 
 # експорт - гістрограма
-hui(1,'Unnamed: 1',1,'Міста','Експорт, млрд. долл',10e-7)
+hui(2,'Unnamed: 1',1,'Міста','Експорт, млрд. долл',10e-7)
 
 # Імпорт - гістрограма
-hui(2,'Unnamed: 4',4,'Міста','Імпорт, млрд. долл',10e-7) 
+hui(4,'Unnamed: 4',4,'Міста','Імпорт, млрд. долл',10e-7) 
 
-# cities_hist=names_saldo.to_dict('list')
-
-# ax1 = fig.add_subplot(gs[0, 0])
-# ax1.bar(cities_hist['у тому числі'],cities_hist['Unnamed: 7'])
-
-
-# ax1.set_xticklabels(cities_hist['у тому числі'], rotation=90)
-# ax1.set_xlabel('Міста')
-# ax1.set_ylabel('Сальдо, 10 млрд. долл')
-
-# Експорт
-
-cities_export=df.iloc[:,[0,1]]
-print(cities_export)
+# 
 
 plt.show()
