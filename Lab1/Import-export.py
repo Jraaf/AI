@@ -68,6 +68,8 @@ hui(2,'Unnamed: 1',1,'Міста','Експорт, млрд. долл',10e-7)
 # Імпорт - гістрограма
 hui(4,'Unnamed: 4',4,'Міста','Імпорт, млрд. долл',10e-7) 
 
-# 
+# 3
+def do_dataframe(df:pd.DataFrame):
+    pass
 
 plt.show()
