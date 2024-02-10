@@ -71,7 +71,10 @@ hui(4,'Unnamed: 4',4,'Міста','Імпорт, млрд. долл',10e-7)
 
 # 3
 df.index = [df["у тому числі"]]
-df = df.iloc[:, 1:]
-n3.do_dataframe(df=df,num_of_cloumn=1,num_of_row_start=1,num_of_row_end=6)
+df = df.iloc[:, 1:7]
+
+print(df)
+
+n3.do_dataframe(df=df,num_of_cloumn=1,num_of_row_start=1,num_of_row_end=15)
 # df.at
 plt.show()
