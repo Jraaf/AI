@@ -7,12 +7,13 @@ import math
 import random
 import seaborn as sns
 import matplotlib.pyplot as plt
+import num3 as n3
 from matplotlib.gridspec import GridSpec
 
 
 
 #1
-df=pd.read_excel("Lab1/stat.xls",skiprows=6,skipfooter=3)
+df=pd.read_excel("stat.xls",skiprows=6,skipfooter=3)
 # print(df.head)
 saldo=df["Unnamed: 7"]
 names_saldo=df.iloc[:,[0,7]]
@@ -68,11 +69,11 @@ hui(4,'Unnamed: 4',4,'Міста','Імпорт, млрд. долл',10e-7)
 plt.show()
 
 # 4
-#усе зроблено вище
-def do_dataframe(df:pd.DataFrame):
-    pass
-
 df.index = [df["у тому числі"]]
-df = df.iloc[:, 1:]
-df.at
-print(df.head())
+df = df.iloc[:, 1:7]
+
+print(df)
+
+n3.do_dataframe(df=df,num_of_cloumn=1,num_of_row_start=1,num_of_row_end=15)
+# df.at
+plt.show()
