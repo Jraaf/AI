@@ -32,12 +32,11 @@ def do_series(df:pd.DataFrame):
 
     print('-----------------Інші дії--------------------')
     print('Тип даних: ',df.dtypes)
-    print('\n\n\n\n\nПовернення базової колекції:\n',df.values)
+    print('\nПовернення базової колекції:\n',df.values,'\n\n\n')
 
 def do_dataframe(df:pd.DataFrame,num_of_cloumn:int,num_of_row_start:int,num_of_row_end:int):
     print('-----------------Зернення до колонки--------------------')
     print(df[f'Unnamed: {num_of_cloumn}'])
-    # print(df.loc[''])
     df=df.rename(columns={'Unnamed: 1':'|у тому числі|',
                           'Unnamed: 2':'|експорт, тис USD|',
                           'Unnamed: 3':'|експорт у % до 2022|',
