@@ -27,5 +27,3 @@ def do_dataframe(df:pd.DataFrame,num_of_cloumn:int,num_of_row_start:int,num_of_r
     print(df.sort_index(ascending=False))
     print('------------------Сортування стовпців за індексами (спадання)-----------------------')
     print(df.sort_index(ascending=False,axis=1))
-    # print('------------------Сортування рядків за значеннями (спадання)-----------------------')
-    # print(df.sort_values(by='Днiпропетровська',ascending=False))
