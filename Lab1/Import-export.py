@@ -1,26 +1,23 @@
 import pandas as pd
-import openpyxl
-import xlrd
 import statistics as s
 import numpy as np
-import math
-import random
-import seaborn as sns
 import matplotlib.pyplot as plt
-import num3 as n3
+import num4 as n4
 from matplotlib.gridspec import GridSpec
+import os
 
 
 
 #1
 df=pd.read_excel("stat.xls",skiprows=6,skipfooter=3)
-# print(df.head)
 saldo=df["Unnamed: 7"]
 names_saldo=df.iloc[:,[0,7]]
-# print(saldo.head)
+
+print('-----------------Сальдо по областям України за 2023 рік--------------------')
 print(names_saldo)
 
 #2
+print('-----------------Статистика по сальдо--------------------')
 mean = saldo.mean()
 print("mean", mean)
 mode = saldo.mode()
@@ -72,8 +69,8 @@ plt.show()
 df.index = [df["у тому числі"]]
 df = df.iloc[:, 1:7]
 
-print(df)
+# print(df)
 
-n3.do_dataframe(df=df,num_of_cloumn=1,num_of_row_start=1,num_of_row_end=15)
+n4.do_dataframe(df=df,num_of_cloumn=1,num_of_row_start=1,num_of_row_end=15)
 # df.at
 plt.show()

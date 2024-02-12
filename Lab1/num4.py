@@ -1,4 +1,38 @@
+#4
 import pandas as pd
+
+def do_series(df:pd.DataFrame):
+    print('-----------------Створення Series з індексами за замовчуванням--------------------')
+    print(df.head())
+
+    print('-----------------Звернення до елементів Series--------------------\n'
+          '                     (Звернення до колонки)')
+    print(df['у тому числі'].head())
+
+    print('-----------------Обчислення описових статистик для Series--------------------')
+    saldo = df["Unnamed: 7"]
+    mean = saldo.mean()
+    print("mean", mean)
+    mode = saldo.mode()
+    print("mode", mode if mode.size < saldo.size else "no mode")
+    min = saldo.min()
+    print("min", min)
+    max = saldo.max()
+    print("max", max)
+    std = saldo.std()
+    print("std", std)
+
+    print('-----------------Створення колекції Series з нестандартними індексами--------------------')
+    df.index = [df["у тому числі"]]
+    df = pd.DataFrame(df.iloc[:, 1:])
+    df.columns = ['експ. тис. дол.', 'експ. у % до 9 міс.', 'експ. у % до заг.',
+                  'імп. тис. дол.', 'імп. у % до 9 міс.', 'імп. у % до заг.',
+                  'сальдо', 'region']
+    print(df.head())
+
+    print('-----------------Інші дії--------------------')
+    print('Тип даних: ',df.dtypes)
+    print('\n\n\n\n\nПовернення базової колекції:\n',df.values)
 
 def do_dataframe(df:pd.DataFrame,num_of_cloumn:int,num_of_row_start:int,num_of_row_end:int):
     print('-----------------Зернення до колонки--------------------')
