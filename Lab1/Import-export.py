@@ -30,7 +30,7 @@ print("std",std)
 #3
 gs = GridSpec(1, 5)
 fig = plt.figure(figsize=(10, 6))
-def hui(plot_column_num:int, column_dict_name:str, column_dict_num:int, x_label:str, label:str, multiplier=1.0):
+def print_this_sheet(plot_column_num:int, column_dict_name:str, column_dict_num:int, x_label:str, label:str, multiplier=1.0):
     ax = fig.add_subplot(gs[0, plot_column_num])
     cities_data = df.iloc[:, [0, column_dict_num]]
     cities_data_hist = cities_data.to_dict('list')
@@ -51,13 +51,13 @@ def hui(plot_column_num:int, column_dict_name:str, column_dict_num:int, x_label:
     return ax
 
 # Сальдо - гістрограма
-hui(0,'Unnamed: 7',7,'Міста','Сальдо, млрд. долл',10e-7)
+print_this_sheet(0,'Unnamed: 7',7,'Міста','Сальдо, млрд. долл',10e-7)
 
 # експорт - гістрограма
-hui(2,'Unnamed: 1',1,'Міста','Експорт, млрд. долл',10e-7)
+print_this_sheet(2,'Unnamed: 1',1,'Міста','Експорт, млрд. долл',10e-7)
 
 # Імпорт - гістрограма
-hui(4,'Unnamed: 4',4,'Міста','Імпорт, млрд. долл',10e-7)
+print_this_sheet(4,'Unnamed: 4',4,'Міста','Імпорт, млрд. долл',10e-7)
 
 plt.show()
 
